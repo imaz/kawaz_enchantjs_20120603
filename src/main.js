@@ -17,15 +17,21 @@ window.onload = function(){
 
     //event
     player.addEventListener('enterframe',function(){
-      this.speed = 0;
+      this.speedX = 0;
+      this.speedY = 0;
       if(game.input.left){
         this.scaleX = 1;
-        this.speed = -5;
+        this.speedX = -5;
       }else if(game.input.right){
         this.scaleX = -1;
-        this.speed = 5;
+        this.speedX = 5;
+      }else if(game.input.down){
+        this.speedY = 5;
+      }else if(game.input.up){
+        this.speedY = -5;
       }
-      this.x += this.speed;
+      this.x += this.speedX;
+      this.y += this.speedY;
     });
 
     game.rootScene.addChild(player);
